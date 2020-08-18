@@ -46,7 +46,7 @@ en
 Text Label 2100 1550 2    50   ~ 0
 usb
 Text Label 1300 950  0    50   ~ 0
-rst
+nrst
 Text Label 1300 1050 0    50   ~ 0
 3vo
 Text Label 1300 1250 0    50   ~ 0
@@ -137,17 +137,17 @@ Text Label 7100 5500 2    50   ~ 0
 osc_in
 Text Label 7400 5500 0    50   ~ 0
 osc_out
-Text Label 8750 2400 2    50   ~ 0
+Text Label 8750 2000 2    50   ~ 0
 osc_in
-Text Label 8750 2500 2    50   ~ 0
+Text Label 8750 2100 2    50   ~ 0
 osc_out
 Text Label 8750 3300 2    50   ~ 0
 scl
 Text Label 8750 3400 2    50   ~ 0
 sda
-Text Label 10050 3600 0    50   ~ 0
+Text Label 8750 3700 2    50   ~ 0
 tx
-Text Label 10050 3700 0    50   ~ 0
+Text Label 8750 3800 2    50   ~ 0
 rx
 $Comp
 L Switch:SW_Push SW1
@@ -202,47 +202,47 @@ nrst
 $Comp
 L Regulator_Linear:AMS1117-3.3 U2
 U 1 1 5F3A741F
-P 3800 4150
-F 0 "U2" H 3800 4392 50  0000 C CNN
-F 1 "AMS1117-3.3" H 3800 4301 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 3800 4350 50  0001 C CNN
-F 3 "http://www.advanced-monolithic.com/pdf/ds1117.pdf" H 3900 3900 50  0001 C CNN
-F 4 "C6186" H 3800 4150 50  0001 C CNN "LCSC"
-	1    3800 4150
+P 4200 4100
+F 0 "U2" H 4200 4342 50  0000 C CNN
+F 1 "AMS1117-3.3" H 4200 4251 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 4200 4300 50  0001 C CNN
+F 3 "http://www.advanced-monolithic.com/pdf/ds1117.pdf" H 4300 3850 50  0001 C CNN
+F 4 "C6186" H 4200 4100 50  0001 C CNN "LCSC"
+	1    4200 4100
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C_Small C4
 U 1 1 5F3A8CEF
-P 4200 4300
-F 0 "C4" H 4292 4346 50  0000 L CNN
-F 1 "22u" H 4292 4255 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 4200 4300 50  0001 C CNN
-F 3 "~" H 4200 4300 50  0001 C CNN
-F 4 "C59461" H 4200 4300 50  0001 C CNN "LCSC"
-	1    4200 4300
+P 4600 4250
+F 0 "C4" H 4692 4296 50  0000 L CNN
+F 1 "22u" H 4692 4205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 4600 4250 50  0001 C CNN
+F 3 "~" H 4600 4250 50  0001 C CNN
+F 4 "C59461" H 4600 4250 50  0001 C CNN "LCSC"
+	1    4600 4250
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	4200 4200 4200 4150
+	4600 4150 4600 4100
 Wire Wire Line
-	4200 4150 4100 4150
+	4600 4100 4500 4100
 Wire Wire Line
-	4200 4400 4200 4450
+	4600 4350 4600 4400
 Wire Wire Line
-	4200 4450 3800 4450
+	4600 4400 4200 4400
 $Comp
 L power:GND #PWR0103
 U 1 1 5F3A9B16
-P 3800 4450
-F 0 "#PWR0103" H 3800 4200 50  0001 C CNN
-F 1 "GND" H 3805 4277 50  0000 C CNN
-F 2 "" H 3800 4450 50  0001 C CNN
-F 3 "" H 3800 4450 50  0001 C CNN
-	1    3800 4450
+P 4200 4400
+F 0 "#PWR0103" H 4200 4150 50  0001 C CNN
+F 1 "GND" H 4205 4227 50  0000 C CNN
+F 2 "" H 4200 4400 50  0001 C CNN
+F 3 "" H 4200 4400 50  0001 C CNN
+	1    4200 4400
 	1    0    0    -1  
 $EndComp
-Connection ~ 3800 4450
+Connection ~ 4200 4400
 $Comp
 L Device:C_Small C11
 U 1 1 5F3AAE77
@@ -427,53 +427,49 @@ F 3 "" H 9450 4400 50  0001 C CNN
 	1    9450 4400
 	1    0    0    -1  
 $EndComp
-Text Label 4200 4150 0    50   ~ 0
+Text Label 4600 4100 0    50   ~ 0
 3vo
 $Comp
 L Device:D_Schottky_Small D1
 U 1 1 5F3C984B
-P 3050 3900
-F 0 "D1" H 3050 3695 50  0000 C CNN
-F 1 "B5819W" H 3050 3786 50  0000 C CNN
-F 2 "Diode_SMD:D_SOD-123" V 3050 3900 50  0001 C CNN
-F 3 "~" V 3050 3900 50  0001 C CNN
-F 4 "C8598" H 3050 3900 50  0001 C CNN "LCSC"
-	1    3050 3900
+P 3100 4100
+F 0 "D1" H 3100 3895 50  0000 C CNN
+F 1 "B5819W" H 3100 3986 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-123" V 3100 4100 50  0001 C CNN
+F 3 "~" V 3100 4100 50  0001 C CNN
+F 4 "C8598" H 3100 4100 50  0001 C CNN "LCSC"
+	1    3100 4100
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	3150 3900 3350 3900
+	3750 3850 3750 4100
 Wire Wire Line
-	3350 3900 3350 4150
+	3750 4100 3900 4100
+Connection ~ 3750 4100
 Wire Wire Line
-	3350 4150 3500 4150
-Connection ~ 3350 4150
-Wire Wire Line
-	2800 3900 2950 3900
-Wire Wire Line
-	2800 4150 3350 4150
-Text Label 2800 4150 2    50   ~ 0
+	3200 4100 3750 4100
+Text Label 2750 3300 2    50   ~ 0
 usb
-Text Label 2800 3900 2    50   ~ 0
+Text Label 3750 3300 2    50   ~ 0
 bat
 $Comp
 L Device:C_Small C13
 U 1 1 5F3CE620
-P 3350 4300
-F 0 "C13" H 3258 4254 50  0000 R CNN
-F 1 "10u" H 3258 4345 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3350 4300 50  0001 C CNN
-F 3 "~" H 3350 4300 50  0001 C CNN
-F 4 "C19702" H 3350 4300 50  0001 C CNN "LCSC"
-	1    3350 4300
+P 3750 4250
+F 0 "C13" H 3658 4204 50  0000 R CNN
+F 1 "10u" H 3658 4295 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3750 4250 50  0001 C CNN
+F 3 "~" H 3750 4250 50  0001 C CNN
+F 4 "C19702" H 3750 4250 50  0001 C CNN "LCSC"
+	1    3750 4250
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	3350 4200 3350 4150
+	3750 4150 3750 4100
 Wire Wire Line
-	3350 4400 3350 4450
+	3750 4350 3750 4400
 Wire Wire Line
-	3350 4450 3800 4450
+	3750 4400 4200 4400
 $Comp
 L Device:LED_Small D2
 U 1 1 5F3D12E7
@@ -559,10 +555,6 @@ Text Label 1300 1550 0    50   ~ 0
 a2
 Text Label 1300 1650 0    50   ~ 0
 a3
-Text Label 1300 1750 0    50   ~ 0
-a4
-Text Label 1300 1850 0    50   ~ 0
-a5
 $Comp
 L power:GND #PWR0108
 U 1 1 5F3DC4BE
@@ -809,10 +801,6 @@ Text Label 10050 2900 0    50   ~ 0
 a2
 Text Label 10050 3000 0    50   ~ 0
 a3
-Text Label 10050 3100 0    50   ~ 0
-a4
-Text Label 10050 3200 0    50   ~ 0
-a5
 $Comp
 L Jumper:SolderJumper_3_Open JP1
 U 1 1 5F41960C
@@ -851,28 +839,73 @@ Text Label 8750 3900 2    50   ~ 0
 nss
 Text Label 2100 2250 2    50   ~ 0
 nss
-Text Label 8750 3700 2    50   ~ 0
-pb10
-Text Label 8750 3800 2    50   ~ 0
-pb11
-Text Label 8750 3500 2    50   ~ 0
-pb8
 Text Label 8750 3600 2    50   ~ 0
-pb9
+cantx
 Text Label 2100 1650 2    50   ~ 0
-pb8
+cantx
+Text Label 8750 2500 2    50   ~ 0
+LED
+Text Label 6400 6000 2    50   ~ 0
+LED
+$Comp
+L Transistor_FET:Si2371EDS Q1
+U 1 1 5F3B89AB
+P 3650 3650
+F 0 "Q1" H 3854 3696 50  0000 L CNN
+F 1 "SI2301CDS" H 3854 3605 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3850 3575 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/63924/si2371eds.pdf" H 3650 3650 50  0001 L CNN
+F 4 "C10487" H 3650 3650 50  0001 C CNN "LCSC"
+	1    3650 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3750 3300 3750 3450
+$Comp
+L Device:R_Small R6
+U 1 1 5F3C3394
+P 2750 4250
+F 0 "R6" H 2809 4296 50  0000 L CNN
+F 1 "100k" H 2809 4205 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2750 4250 50  0001 C CNN
+F 3 "~" H 2750 4250 50  0001 C CNN
+F 4 "C25803" H 2750 4250 50  0001 C CNN "LCSC"
+	1    2750 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 4100 2750 4100
+Wire Wire Line
+	2750 4100 2750 4150
+Wire Wire Line
+	2750 4350 2750 4400
+Wire Wire Line
+	2750 4400 3750 4400
+Connection ~ 3750 4400
+Wire Wire Line
+	3450 3650 2750 3650
+Wire Wire Line
+	2750 3650 2750 4100
+Connection ~ 2750 4100
+Wire Wire Line
+	2750 3300 2750 3650
+Connection ~ 2750 3650
+Text Label 3250 4400 0    50   ~ 0
+gnd
+Text Label 8750 2700 2    50   ~ 0
+pb0
+Text Label 8750 2800 2    50   ~ 0
+pb1
+Text Label 10050 3100 0    50   ~ 0
+a4
+Text Label 10050 3200 0    50   ~ 0
+a5
+Text Label 1300 1750 0    50   ~ 0
+a4
+Text Label 1300 1850 0    50   ~ 0
+a5
 Text Label 2100 1750 2    50   ~ 0
-pb9
-Text Label 2100 1850 2    50   ~ 0
-pb10
-Text Label 2100 1950 2    50   ~ 0
-pb11
-Text Label 2100 2050 2    50   ~ 0
-pa6
-Text Label 2100 2150 2    50   ~ 0
-pa7
-Text Label 10050 3300 0    50   ~ 0
-pa6
-Text Label 10050 3400 0    50   ~ 0
-pa7
+canrx
+Text Label 8750 3500 2    50   ~ 0
+canrx
 $EndSCHEMATC
