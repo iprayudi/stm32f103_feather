@@ -603,8 +603,6 @@ Text Label 9350 5550 0    50   ~ 0
 usb_dp
 Text Label 2550 3550 0    50   ~ 0
 usb_dm
-Text Label 9350 5450 0    50   ~ 0
-usb_dm
 $Comp
 L power:GND #PWR0109
 U 1 1 5F3E6BA2
@@ -628,25 +626,25 @@ Wire Wire Line
 $Comp
 L power:GND #PWR0110
 U 1 1 5F3F0470
-P 5100 5550
-F 0 "#PWR0110" H 5100 5300 50  0001 C CNN
-F 1 "GND" H 5105 5377 50  0000 C CNN
-F 2 "" H 5100 5550 50  0001 C CNN
-F 3 "" H 5100 5550 50  0001 C CNN
-	1    5100 5550
+P 4900 5050
+F 0 "#PWR0110" H 4900 4800 50  0001 C CNN
+F 1 "GND" H 4905 4877 50  0000 C CNN
+F 2 "" H 4900 5050 50  0001 C CNN
+F 3 "" H 4900 5050 50  0001 C CNN
+	1    4900 5050
 	1    0    0    -1  
 $EndComp
-Text Label 5100 5450 0    50   ~ 0
+Text Label 4900 4950 0    50   ~ 0
 bat
 $Comp
 L Connector_Generic:Conn_01x02 J5
 U 1 1 5F3A21F3
-P 4900 5550
-F 0 "J5" H 4818 5225 50  0000 C CNN
-F 1 "JST-LiPo-conn" H 4818 5316 50  0000 C CNN
-F 2 "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal" H 4900 5550 50  0001 C CNN
-F 3 "~" H 4900 5550 50  0001 C CNN
-	1    4900 5550
+P 4700 5050
+F 0 "J5" H 4618 4725 50  0000 C CNN
+F 1 "JST-LiPo-conn" H 4618 4816 50  0000 C CNN
+F 2 "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal" H 4700 5050 50  0001 C CNN
+F 3 "~" H 4700 5050 50  0001 C CNN
+	1    4700 5050
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -877,18 +875,6 @@ Wire Wire Line
 	8750 3050 8650 3050
 Wire Wire Line
 	8850 3050 8750 3050
-$Comp
-L MCU_ST_STM32F1:STM32F103CBTx U1
-U 1 1 5F3A98EE
-P 8750 4550
-F 0 "U1" H 9050 3100 50  0000 C CNN
-F 1 "STM32F103CBTx" H 9300 3000 50  0000 C CNN
-F 2 "Package_QFP:LQFP-48_7x7mm_P0.5mm" H 8150 3150 50  0001 R CNN
-F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00161566.pdf" H 8750 4550 50  0001 C CNN
-F 4 "C8304" H 8750 4550 50  0001 C CNN "LSCS"
-	1    8750 4550
-	1    0    0    -1  
-$EndComp
 Text Label 9350 5850 0    50   ~ 0
 pa15
 Text Label 2400 2300 2    50   ~ 0
@@ -928,13 +914,9 @@ Wire Notes Line
 Text Notes 3150 2650 0    50   ~ 0
 Power supply
 Wire Notes Line
-	9750 6350 9750 2150
-Wire Notes Line
-	9750 2150 5550 2150
+	10300 6350 10300 2150
 Wire Notes Line
 	5550 2150 5550 6350
-Wire Notes Line
-	5550 6350 9750 6350
 Wire Notes Line
 	1200 2850 2850 2850
 Wire Notes Line
@@ -949,11 +931,7 @@ Wire Wire Line
 	3350 1700 3500 1700
 Wire Wire Line
 	3700 1700 3800 1700
-NoConn ~ 9350 5350
-NoConn ~ 9350 5250
-NoConn ~ 9350 5150
 NoConn ~ 9350 5050
-NoConn ~ 9350 4950
 NoConn ~ 8050 4550
 NoConn ~ 8050 4450
 NoConn ~ 8050 4350
@@ -962,11 +940,11 @@ NoConn ~ 8050 4050
 Text Label 8550 2850 2    50   ~ 0
 vrtc
 $Comp
-L Connector_Generic:Conn_01x02 J6
+L Connector_Generic:Conn_01x02 vrtc1
 U 1 1 5F4EC4D8
 P 8050 2950
-F 0 "J6" H 7968 2625 50  0000 C CNN
-F 1 "vrtc" H 7968 2716 50  0000 C CNN
+F 0 "vrtc1" H 8050 2750 50  0000 C CNN
+F 1 "vrtc" H 7968 2716 50  0001 C CNN
 F 2 "Resistor_SMD:R_0402_1005Metric" H 8050 2950 50  0001 C CNN
 F 3 "~" H 8050 2950 50  0001 C CNN
 F 4 "" H 8050 2950 50  0001 C CNN "LCSC"
@@ -990,4 +968,92 @@ F 3 "" H 8250 2950 50  0001 C CNN
 $EndComp
 NoConn ~ 2550 3650
 NoConn ~ 2400 1600
+$Comp
+L Device:R_Small R7
+U 1 1 5F3D06A1
+P 4900 5600
+F 0 "R7" H 4959 5646 50  0000 L CNN
+F 1 "100k" H 4959 5555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4900 5600 50  0001 C CNN
+F 3 "~" H 4900 5600 50  0001 C CNN
+F 4 "C25804" H 4900 5600 50  0001 C CNN "LCSC"
+	1    4900 5600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R8
+U 1 1 5F3D0C34
+P 4900 5900
+F 0 "R8" H 4959 5946 50  0000 L CNN
+F 1 "100k" H 4959 5855 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4900 5900 50  0001 C CNN
+F 3 "~" H 4900 5900 50  0001 C CNN
+F 4 "C25804" H 4900 5900 50  0001 C CNN "LCSC"
+	1    4900 5900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0114
+U 1 1 5F3D132A
+P 4900 6100
+F 0 "#PWR0114" H 4900 5850 50  0001 C CNN
+F 1 "GND" H 4905 5927 50  0000 C CNN
+F 2 "" H 4900 6100 50  0001 C CNN
+F 3 "" H 4900 6100 50  0001 C CNN
+	1    4900 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 5500 4900 5400
+Wire Wire Line
+	4900 5400 4250 5400
+Connection ~ 4250 5400
+Wire Wire Line
+	4900 6000 4900 6100
+Text Label 5000 5750 0    50   ~ 0
+batvtest
+Wire Wire Line
+	4900 5700 4900 5750
+Wire Wire Line
+	5000 5750 4900 5750
+Connection ~ 4900 5750
+Wire Wire Line
+	4900 5750 4900 5800
+Text Label 9350 4950 0    50   ~ 0
+batvtest
+$Comp
+L Connector_Generic:Conn_01x03 usart1
+U 1 1 5F3DF3AE
+P 10100 5250
+F 0 "usart1" H 10100 5000 50  0000 C CNN
+F 1 "Conn_01x03" H 10018 5016 50  0001 C CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Open_Pad1.0x1.5mm" H 10100 5250 50  0001 C CNN
+F 3 "~" H 10100 5250 50  0001 C CNN
+	1    10100 5250
+	1    0    0    1   
+$EndComp
+Text Label 9350 5450 0    50   ~ 0
+usb_dm
+$Comp
+L MCU_ST_STM32F1:STM32F103CBTx U1
+U 1 1 5F3A98EE
+P 8750 4550
+F 0 "U1" H 9050 3100 50  0000 C CNN
+F 1 "STM32F103CBTx" H 9300 3000 50  0000 C CNN
+F 2 "Package_QFP:LQFP-48_7x7mm_P0.5mm" H 8150 3150 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00161566.pdf" H 8750 4550 50  0001 C CNN
+F 4 "C8304" H 8750 4550 50  0001 C CNN "LSCS"
+	1    8750 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9350 5150 9900 5150
+Wire Wire Line
+	9900 5250 9350 5250
+Wire Wire Line
+	9350 5350 9900 5350
+Wire Notes Line
+	5550 6350 10300 6350
+Wire Notes Line
+	5550 2150 10300 2150
 $EndSCHEMATC
