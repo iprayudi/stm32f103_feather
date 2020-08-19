@@ -914,13 +914,9 @@ Wire Notes Line
 Text Notes 3150 2650 0    50   ~ 0
 Power supply
 Wire Notes Line
-	9750 6350 9750 2150
-Wire Notes Line
-	9750 2150 5550 2150
+	10300 6350 10300 2150
 Wire Notes Line
 	5550 2150 5550 6350
-Wire Notes Line
-	5550 6350 9750 6350
 Wire Notes Line
 	1200 2850 2850 2850
 Wire Notes Line
@@ -1046,7 +1042,7 @@ F 0 "U1" H 9050 3100 50  0000 C CNN
 F 1 "STM32F103CBTx" H 9300 3000 50  0000 C CNN
 F 2 "Package_QFP:LQFP-48_7x7mm_P0.5mm" H 8150 3150 50  0001 R CNN
 F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00161566.pdf" H 8750 4550 50  0001 C CNN
-F 4 "C8304" H 8750 4550 50  0001 C CNN "LSCS"
+F 4 "C8304" H 8750 4550 50  0001 C CNN "LCSC"
 	1    8750 4550
 	1    0    0    -1  
 $EndComp
@@ -1056,4 +1052,36 @@ Wire Wire Line
 	9900 5250 9350 5250
 Wire Wire Line
 	9350 5350 9900 5350
+Wire Notes Line
+	5550 6350 10300 6350
+Wire Notes Line
+	5550 2150 10300 2150
+$Comp
+L Connector_Generic:Conn_01x04 J6
+U 1 1 5F3ED892
+P 1450 4100
+F 0 "J6" H 1368 3675 50  0000 C CNN
+F 1 "Conn_01x04" H 1368 3766 50  0000 C CNN
+F 2 "Connector_PinHeader_1.00mm:PinHeader_1x04_P1.00mm_Vertical_SMD_Pin1Left" H 1450 4100 50  0001 C CNN
+F 3 "~" H 1450 4100 50  0001 C CNN
+	1    1450 4100
+	-1   0    0    1   
+$EndComp
+Text Label 1650 3900 0    50   ~ 0
+usb
+$Comp
+L power:GND #PWR0115
+U 1 1 5F3EED8C
+P 1650 4200
+F 0 "#PWR0115" H 1650 3950 50  0001 C CNN
+F 1 "GND" H 1655 4027 50  0000 C CNN
+F 2 "" H 1650 4200 50  0001 C CNN
+F 3 "" H 1650 4200 50  0001 C CNN
+	1    1650 4200
+	1    0    0    -1  
+$EndComp
+Text Label 1650 4100 0    50   ~ 0
+usb_dp
+Text Label 1650 4000 0    50   ~ 0
+usb_dm
 $EndSCHEMATC
