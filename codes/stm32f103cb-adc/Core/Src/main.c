@@ -49,6 +49,7 @@ I2C_HandleTypeDef hi2c1;
 
 /* USER CODE BEGIN PV */
 
+#if (SIMULATED_DATA)
 /*
  * signal frequency = 50kHz + 400kHz
  * sampling frequency = 1MHz
@@ -66,13 +67,14 @@ uint16_t signal1[256] = {
 uint16_t signal2[256] = {
 		3072,3022,1626,1446,2098,2048,1998,2650,2470,1074,1024,3022,3674,1446,50,2048,4046,2650,422,1074,3072,3022,1626,1446,2098,2048,1998,2649,2470,1074,1024,3022,3673,1446,50,2048,4045,2650,422,1074,3072,3022,1626,1446,2098,2048,1997,2650,2470,1074,1024,3022,3674,1446,50,2048,4046,2650,422,1074,3072,3021,1626,1446,2098,2048,1998,2650,2471,1074,1024,3022,3673,1446,50,2048,4046,2650,423,1074,3072,3022,1626,1446,2098,2048,1997,2650,2470,1075,1024,3022,3674,1446,50,2048,4046,2649,422,1074,3072,3022,1625,1446,2098,2048,1998,2650,2471,1074,1024,3022,3674,1446,51,2048,4046,2650,422,1074,3072,3021,1626,1447,2098,2048,1998,2649,2470,1074,1024,3022,3674,1446,50,2048,4046,2650,422,1074,3072,3022,1626,1446,2098,2048,1998,2650,2470,1074,1024,3022,3674,1446,50,2048,4045,2649,422,1074,3072,3022,1625,1446,2098,2048,1998,2649,2470,1074,1024,3021,3674,1446,50,2048,4046,2650,422,1074,3072,3022,1626,1447,2098,2048,1998,2650,2470,1074,1024,3022,3673,1446,50,2048,4046,2650,422,1074,3072,3022,1626,1446,2098,2048,1998,2650,2470,1074,1024,3022,3674,1446,50,2048,4045,2650,422,1074,3072,3022,1626,1446,2098,2048,1998,2650,2470,1075,1024,3022,3674,1446,50,2048,4046,2650,422,1074,3072,3022,1626,1446,2098,2048,1998,2650,2470,1074,1024,3022,3673,1446,51,2048
 };
-
+#endif
 
 
 arm_rfft_fast_instance_f32 S;
 float32_t pBuff[FFT_SIZE*2];
 float32_t pDst[FFT_SIZE/2];
 float32_t pSrc[FFT_SIZE];
+
 extern uint8_t SSD1306_Buffer[SSD1306_WIDTH * SSD1306_HEIGHT / 8];
 
 uint16_t adcRawData[ADC_SIZE];
@@ -91,34 +93,16 @@ static void MX_I2C1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void doFFT(q15_t* rawdata)
-{
-	/* do FFT */
-
-//	  arm_rfft_q15(&S,rawdata, pBuff);
-//	  arm_cmplx_mag_q15(pBuff,pDst,FFT_SIZE);
-
-//	  arm_rfft_fast_f32(&S,rawdata,pOut,0);
-//	  arm_cmplx_mag_f32(pOut,pOut_mag,FFT_SIZE);
-
-//	  arm_max_f32(&pOut_mag[1],(FFT_SIZE/2)-1,&pMax,&pIndex);
-//	  pFreq = FFT_BIN * (pIndex+1);
-//	  pOut_mag[0]=0;
-}
 void plotData(void)
 {
-	uint32_t mag;
+	uint32_t pScaled,pMag;
 	SSD1306_Fill(SSD1306_COLOR_BLACK);
-//	for (int i =0;i<128;i++)
-//	{
-//		mag=(uint32_t)pOut_mag[i] >> 11  ;
-//		SSD1306_DrawLine(i,((64-mag)<0?0:(64-mag)),i,64,SSD1306_COLOR_WHITE);
-//	}
+
 	for (int i =0;i<128;i++)
 	{
-//		mag=(uint32_t)adcRawData[i] >> 6  ;
-		mag=(uint32_t)pDst[i] >> 1  ;
-		SSD1306_DrawLine(i,((64-mag)<0?0:(64-mag)),i,64,SSD1306_COLOR_WHITE);
+		pScaled=(uint32_t)pDst[i];// >> 1  ;
+		pMag=(pScaled>64)?10:(64-pScaled);
+		SSD1306_DrawLine(i,64,i,pMag,SSD1306_COLOR_WHITE);
 	}
     SSD1306_UpdateScreen();
 }
@@ -161,9 +145,6 @@ int main(void)
 
   while ( arm_rfft_fast_init_f32(&S,FFT_SIZE) != ARM_MATH_SUCCESS );
 
-//  status = arm_rfft_fast_init_f32(&S,256);
-//  __NOP();
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -172,57 +153,56 @@ int main(void)
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adcRawData, ADC_SIZE);
   adcReadyFlag=0;
 
-//  for (int i=0; i<FFT_SIZE;i++)
-//  {
-//	  pSrc[i]=signal1[i];
-//  }
-
-
+#if (SIMULATED_DATA)
   int k=0;
+#endif
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_Delay(500);
+	  HAL_Delay(150);
 	  if (adcReadyFlag==1)
 	  {
+		  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 
+#if (SIMULATED_DATA)
+		  if (k==0)
+		  {
+			  for (int i=0; i<FFT_SIZE;i++)
+			  		  {
+			  			  pSrc[i]=(float32_t) signal2[i];
+			  			  pSrc[i]=pSrc[i]*0.000805f;
+			  		  }
+			  k=1;
+		  }
+		  else
+		  {
+			  for (int i=0; i<FFT_SIZE;i++)
+			  		  {
+			  			  pSrc[i]=(float32_t) signal1[i];
+			  			  pSrc[i]=pSrc[i]*0.000805f;
+			  		  }
+			  k=0;
+		  }
+#else
 		  for (int i=0; i<FFT_SIZE;i++)
 		  {
 			  pSrc[i]=(float32_t) adcRawData[i];
 			  pSrc[i]=pSrc[i]*0.000805f;
 		  }
+#endif
 
-//		  if (k==0)
-//		  {
-//			  for (int i=0; i<FFT_SIZE;i++)
-//			  		  {
-//			  			  pSrc[i]=(float32_t) signal2[i];
-//			  			  pSrc[i]=pSrc[i]*0.000805f;
-//			  		  }
-//			  k=1;
-//		  }
-//		  else
-//		  {
-//			  for (int i=0; i<FFT_SIZE;i++)
-//			  		  {
-//			  			  pSrc[i]=(float32_t) signal1[i];
-//			  			  pSrc[i]=pSrc[i]*0.000805f;
-//			  		  }
-//			  k=0;
-//		  }
-		  HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-
-//		  memcpy(pSrc,adcRawData,FFT_SIZE);
-//		  memcpy(pSrc,signal1,FFT_SIZE);
-//		  doFFT(pSrc);
-
+		  /* do FFT */
 		  arm_rfft_fast_f32(&S,pSrc, pBuff,0);
 		  arm_cmplx_mag_f32(pBuff,pDst,FFT_SIZE);
 
 		  plotData();
+
 		  adcReadyFlag=0;
+
+		  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 		  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adcRawData, ADC_SIZE);
 	  }
   }
@@ -306,7 +286,7 @@ static void MX_ADC1_Init(void)
   }
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Channel = ADC_CHANNEL_0;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
@@ -399,7 +379,7 @@ static void MX_GPIO_Init(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 
-	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 	__NOP();
 	adcReadyFlag=1;
   /* Prevent unused argument(s) compilation warning */

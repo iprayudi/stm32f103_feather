@@ -1,6 +1,6 @@
 Drivers/SSD1306/Src/test.o: ../Drivers/SSD1306/Src/test.c \
- C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h \
- C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h \
+ C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h \
+ C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -25,11 +25,11 @@ Drivers/SSD1306/Src/test.o: ../Drivers/SSD1306/Src/test.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
- C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h
+ C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h
 
-C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h:
+C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h:
 
-C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h:
+C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h:
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 
@@ -79,4 +79,4 @@ C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/D
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 
-C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h:
+C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h:

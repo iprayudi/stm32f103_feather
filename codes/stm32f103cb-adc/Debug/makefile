@@ -47,8 +47,8 @@ stm32f103cb-adc.bin \
 all: stm32f103cb-adc.elf secondary-outputs
 
 # Tool invocations
-stm32f103cb-adc.elf: $(OBJS) $(USER_OBJS) C:\Users\Iman\Documents\workspace\STM32CubeIDE\workspace_1.1.0\stm32f103cb-adc\STM32F103CBTX_FLASH.ld
-	arm-none-eabi-gcc -o "stm32f103cb-adc.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Iman\Documents\workspace\STM32CubeIDE\workspace_1.1.0\stm32f103cb-adc\STM32F103CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f103cb-adc.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+stm32f103cb-adc.elf: $(OBJS) $(USER_OBJS) C:\Users\imprayudi\Documents\STM32CubeIDE\workspace\stm32f103cb-adc\STM32F103CBTX_FLASH.ld
+	arm-none-eabi-gcc -o "stm32f103cb-adc.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\imprayudi\Documents\STM32CubeIDE\workspace\stm32f103cb-adc\STM32F103CBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f103cb-adc.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -23,10 +23,10 @@ Core/Src/stm32f1xx_it.o: ../Core/Src/stm32f1xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
- C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h \
- C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h \
- C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h \
- C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h \
+ C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h \
+ C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h \
+ C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h \
+ C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h \
  ../Middlewares/ST/ARM/DSP/Inc/arm_math.h ../Core/Inc/stm32f1xx_it.h
 
 ../Core/Inc/main.h:
@@ -79,13 +79,13 @@ Core/Src/stm32f1xx_it.o: ../Core/Src/stm32f1xx_it.c ../Core/Inc/main.h \
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 
-C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h:
+C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/ssd1306.h:
 
-C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h:
+C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h:
 
-C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h:
+C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/fonts.h:
 
-C:/Users/Iman/Documents/workspace/STM32CubeIDE/workspace_1.1.0/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h:
+C:/Users/imprayudi/Documents/STM32CubeIDE/workspace/stm32f103cb-adc/Drivers/SSD1306/Inc/test.h:
 
 ../Middlewares/ST/ARM/DSP/Inc/arm_math.h:
 
