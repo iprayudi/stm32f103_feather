@@ -44,7 +44,8 @@ TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+int tim1Cnt=0;
+uint32_t rpmValue=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,12 +93,15 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim1);
+  HAL_GPIO_WritePin(MTRENC_GPIO_Port, MTRENC_Pin, GPIO_PIN_RESET);
+
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  while (HAL_TIM_Base_Start_IT(&htim1)!=HAL_OK);
+  while (HAL_TIM_Base_Start(&htim2)!=HAL_OK);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -163,12 +167,12 @@ static void MX_TIM1_Init(void)
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 52000;
+  htim1.Init.Prescaler = 52;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 1000;
+  htim1.Init.Period = 10000;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
   {
     Error_Handler();
@@ -221,7 +225,7 @@ static void MX_TIM2_Init(void)
   sSlaveConfig.SlaveMode = TIM_SLAVEMODE_EXTERNAL1;
   sSlaveConfig.InputTrigger = TIM_TS_TI2FP2;
   sSlaveConfig.TriggerPolarity = TIM_TRIGGERPOLARITY_RISING;
-  sSlaveConfig.TriggerFilter = 15;
+  sSlaveConfig.TriggerFilter = 0;
   if (HAL_TIM_SlaveConfigSynchro(&htim2, &sSlaveConfig) != HAL_OK)
   {
     Error_Handler();
@@ -254,6 +258,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(MTRENC_GPIO_Port, MTRENC_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : LED_Pin */
   GPIO_InitStruct.Pin = LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -261,15 +268,38 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : MTRENC_Pin */
+  GPIO_InitStruct.Pin = MTRENC_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(MTRENC_GPIO_Port, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 
+	uint32_t count;
+	__NOP();
    if (htim->Instance==TIM1)
 	  {
-	   HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	   if (tim1Cnt==100)
+	   {
+		   count = __HAL_TIM_GET_COUNTER(&htim2);
+		   rpmValue = count * 60;
+		   HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		   tim1Cnt=0;
+		   HAL_GPIO_WritePin(MTRENC_GPIO_Port, MTRENC_Pin, GPIO_PIN_RESET);
+		   __HAL_TIM_SET_COUNTER(&htim2,0);
+	   }
+	   else
+	   {
+		   HAL_GPIO_TogglePin(MTRENC_GPIO_Port, MTRENC_Pin);
+		   tim1Cnt++;
+	   }
+	   HAL_TIM_Base_Start_IT(&htim1);
 	  //do something here
 	  }
 
